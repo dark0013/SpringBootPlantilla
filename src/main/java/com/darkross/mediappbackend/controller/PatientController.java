@@ -9,14 +9,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
-@RequestMapping("/patients")
-@RequiredArgsConstructor
+
 public class PatientController {
 //   @Autowired
-    private final PatientService service;
+ //   private final PatientService service;
 
-
+/*
 @GetMapping
     public String sayHello(){
         Patient p = new Patient();
@@ -24,5 +22,5 @@ public class PatientController {
         p.setName("ALAIN CAMPOVERDEx");
         return service.sayHello(p);
 
-    }
+    }*/
 }

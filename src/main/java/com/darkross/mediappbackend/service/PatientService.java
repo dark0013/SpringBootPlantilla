@@ -11,11 +11,11 @@ import org.springframework.stereotype.Service;
 public class PatientService {
 
     //@Autowired
-    private final  PatientReport report ;
+    //private final  PatientReport report ;
 
 
-    public String sayHello(Patient p){
+   /* public String sayHello(Patient p){
         return report.sayHello(p);
-    }
+    }*/
 }
 
