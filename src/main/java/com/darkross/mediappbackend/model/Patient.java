@@ -9,6 +9,7 @@ import lombok.*;
 @Setter
 @Getter
 @Entity
+@EqualsAndHashCode
 public class Patient {
 
     @Id
