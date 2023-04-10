@@ -18,15 +18,15 @@ import static org.springframework.http.HttpStatus.*;
 public class PatientController {
 
     private final PatientServiceImpl service;
-   /* @GetMapping
-    public List<Patient> findAll(){
-        return service.findAll();
-    }*/
-   @GetMapping
-   public ResponseEntity<List<Patient>> findAll(){
-       List<Patient> list = service.findAll();
-       return new ResponseEntity<>(list, OK);
-   }
+    /* @GetMapping
+     public List<Patient> findAll(){
+         return service.findAll();
+     }*/
+    @GetMapping
+    public ResponseEntity<List<Patient>> findAll(){
+        List<Patient> list = service.findAll();
+        return new ResponseEntity<>(list, OK);
+    }
 
   /*  @GetMapping("/{id}")
     public Patient findById(@PathVariable("id") Integer id){

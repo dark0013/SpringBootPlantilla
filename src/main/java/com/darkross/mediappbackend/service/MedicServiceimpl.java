@@ -13,6 +13,6 @@ public class MedicServiceimpl extends CRUDImpl<Medic,Integer> implements IMedicS
     private final IMedicRepo repo;
     @Override
     protected IGenericRepo<Medic, Integer> getRepo() {
-        return null;
+        return repo;
     }
 }
