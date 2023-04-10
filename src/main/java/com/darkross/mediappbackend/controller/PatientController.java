@@ -1,5 +1,6 @@
 package com.darkross.mediappbackend.controller;
 
+import com.darkross.mediappbackend.exception.ModelNotFoundException;
 import com.darkross.mediappbackend.model.Patient;
 import com.darkross.mediappbackend.service.PatientServiceImpl;
 import lombok.RequiredArgsConstructor;
@@ -10,7 +11,8 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 import java.util.List;
 
-import static org.springframework.http.HttpStatus.*;
+import static org.springframework.http.HttpStatus.NO_CONTENT;
+import static org.springframework.http.HttpStatus.OK;
 
 @RestController
 @RequestMapping("/patients")
@@ -36,6 +38,12 @@ public class PatientController {
     @GetMapping("/{id}")
     public ResponseEntity<Patient> findById(@PathVariable("id") Integer id){
         Patient obj = service.findById(id);
+
+        if(obj == null){
+            throw new ModelNotFoundException("ID NOT FOUND " + id);
+
+        }
+
         return new ResponseEntity<>(obj,OK);
     }
 
@@ -66,6 +74,7 @@ public class PatientController {
     @PutMapping
     public ResponseEntity <Patient> update(@RequestBody Patient patient){
         Patient obj = service.update(patient);
+
         return new  ResponseEntity<>(obj, OK);
     }
 
@@ -75,6 +84,12 @@ public class PatientController {
     }*/
 
     public ResponseEntity <Void> delete(@PathVariable("id") Integer id){
+        Patient obj = service.findById(id);
+        System.out.println("aa");
+        if(obj == null){
+            //throw new ModelNotFoundException("ID NOT FOUND" + id);
+            throw new ModelNotFoundException("ID NOT FOUND " + id);
+        }
         service.delete(id);
         return new ResponseEntity<>(NO_CONTENT);
     }

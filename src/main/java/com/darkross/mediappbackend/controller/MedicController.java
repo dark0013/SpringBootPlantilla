@@ -1,6 +1,7 @@
 package com.darkross.mediappbackend.controller;
 
 
+import com.darkross.mediappbackend.exception.ModelNotFoundException;
 import com.darkross.mediappbackend.model.Medic;
 import com.darkross.mediappbackend.service.MedicServiceimpl;
 import lombok.RequiredArgsConstructor;
@@ -30,6 +31,10 @@ public class MedicController {
     @GetMapping("/{id}")
     public ResponseEntity<Medic> findById(@PathVariable("id") Integer id){
         Medic obj = service.findById(id);
+        if(obj == null){
+            //throw new ModelNotFoundException("ID NOT FOUND" + id);
+            throw new ModelNotFoundException("ID NOT FOUND " + id);
+        }
         return new ResponseEntity<>(obj,OK);
     }
 

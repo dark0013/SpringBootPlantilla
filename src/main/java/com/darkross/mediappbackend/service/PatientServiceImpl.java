@@ -29,7 +29,7 @@ public class PatientServiceImpl implements IPatientService{
 
     @Override
     public Patient findById(Integer id) {
-        return repo.findById(id).orElse(new Patient());
+        return repo.findById(id).orElse(null);
     }
 
     @Override
