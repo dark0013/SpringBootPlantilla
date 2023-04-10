@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -24,4 +26,12 @@ public class User {
     private String password;
     @Column(nullable = false)
     private Boolean enabled;
+
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable( name = "user_roles",
+            joinColumns = @JoinColumn(name = "id_user", referencedColumnName = "idUser"),
+            inverseJoinColumns = @JoinColumn(name = "id_role",referencedColumnName = "idRole")
+    )
+    private List<Role> roles;
 }

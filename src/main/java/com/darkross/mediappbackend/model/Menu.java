@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -25,6 +27,14 @@ public class Menu {
 
     @Column(nullable = false,length = 30)
     private String url;
+
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable( name = "menu_roles",
+        joinColumns = @JoinColumn(name = "id_menu", referencedColumnName = "idMenu"),
+        inverseJoinColumns = @JoinColumn(name = "id_role",referencedColumnName = "idRole")
+    )
+    private List<Role> roles;
 
 
 }

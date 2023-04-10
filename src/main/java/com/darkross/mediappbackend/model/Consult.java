@@ -50,7 +50,7 @@ public class Consult {
      *        no permite eliminar los detalles porque no puede dejar huerfanos los registros
      * por defecto es  orphanRemoval = false
      *
-     * fetch = FetchType.LAZY ->
+     * fetch = FetchType.LAZY -> por defecto
      */
     @OneToMany(mappedBy = "consult", cascade = {CascadeType.ALL}, orphanRemoval = true, fetch = FetchType.LAZY)//
      private List<ConsultDetail> details;
