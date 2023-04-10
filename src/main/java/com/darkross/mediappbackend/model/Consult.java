@@ -7,13 +7,14 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class consult {
+public class Consult {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
@@ -36,5 +37,24 @@ public class consult {
 
     @Column(nullable = false) //ISODATE yyyy-mm-ddTHH:mm:ss
     private LocalDateTime consultDate;
+
+
+
+    /**
+     * REFERENCIA MAESTRO DETALLE
+     * NOTA
+     * mappedBy = "consult" -> nombre de la fefrenci que esta en ConsultDetail
+     * cascade = {CascadeType.ALL} -> lo que le pasa al padre le pasa al detalle
+     * orphanRemoval = true -> para remover ciertos elementos del detalle
+     * orphanRemoval = false -> para que no quede sin padre los hijos,
+     *        no permite eliminar los detalles porque no puede dejar huerfanos los registros
+     * por defecto es  orphanRemoval = false
+     *
+     * fetch = FetchType.LAZY ->
+     */
+    @OneToMany(mappedBy = "consult", cascade = {CascadeType.ALL}, orphanRemoval = true, fetch = FetchType.LAZY)//
+     private List<ConsultDetail> details;
+
+
 }
 
