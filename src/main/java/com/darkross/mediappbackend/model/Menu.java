@@ -28,6 +28,10 @@ public class Menu {
     @Column(nullable = false,length = 30)
     private String url;
 
+    //para consultar una tabla recursiva
+    /*@ManyToOne
+    @JoinColumn(name = "id_sub_menu")
+    private Menu menu;*/
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable( name = "menu_roles",
