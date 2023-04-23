@@ -17,6 +17,7 @@ import static org.springframework.http.HttpStatus.OK;
 @RestController
 @RequestMapping("/patients")
 @RequiredArgsConstructor
+//@CrossOrigin(origins = "http://localhost:4200/")
 public class PatientController {
 
     private final PatientServiceImpl service;
